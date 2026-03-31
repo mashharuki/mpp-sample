@@ -1,15 +1,27 @@
 # client
 
+MPP client sample using Bun, mppx, and the Tempo payment method.
+
 To install dependencies:
 
 ```bash
 bun install
 ```
 
-To run:
+Set a Tempo private key before running:
+
+```bash
+export TEMPO_PRIVATE_KEY=0x...
+```
+
+Run the client:
 
 ```bash
 bun run index.ts
 ```
 
-This project was created using `bun init` in bun v1.3.11. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+
+```bash
+Paid ping status: 200
+tm! thanks for paying
+```
