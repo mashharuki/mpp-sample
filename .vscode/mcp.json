@@ -1,0 +1,10 @@
+// Claude: .mcp.json | Cursor: ~/.cursor/mcp.json
+// Windsurf: ~/.codeium/windsurf/mcp_config.json
+{
+    "inputs": [],
+    "servers": {
+      "mpp": {
+        "url": "https://mpp.dev/api/mcp"
+      }
+  }
+}
