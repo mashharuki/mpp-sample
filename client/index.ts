@@ -18,7 +18,8 @@ Mppx.create({
 })
 
 // サーバーにペイドピンを送信
-const response = await fetch('https://mpp.dev/api/ping/paid')
+// const response = await fetch('https://mpp.dev/api/ping/paid')
+const response = await fetch('http://localhost:3000/api/test')
 const body = await response.text()
 
 console.log(`Paid ping status: ${response.status}`)
