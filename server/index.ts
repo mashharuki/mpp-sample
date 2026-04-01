@@ -1,4 +1,5 @@
-import { Mppx, tempo } from 'mppx/server'
+import { Hono } from 'hono'
+import { Mppx, tempo } from 'mppx/hono'
 import { privateKeyToAccount } from 'viem/accounts'
 
 
@@ -18,23 +19,15 @@ const mppx = Mppx.create({
   ],
 })
 
+const app = new Hono()
+
+app.get('/api/test', mppx.charge({ amount: '0.01' }), (c) =>
+  c.json({ message: 'Hello from the paid API!' }),
+)
+
 const server = Bun.serve({
   port: 3000,
-  async fetch(request: Request) {
-    const url = new URL(request.url)
-
-    if (url.pathname === '/api/test') {
-      const response = await mppx.charge({ amount: '0.01' })(request)
-
-      // Payment required — return 402 Challenge
-      if (response.status === 402) return response.challenge
-
-      // Payment verified — return resource with Receipt header
-      return response.withReceipt(Response.json({ message: 'Hello from the paid API!' }))
-    }
-
-    return new Response('Not Found', { status: 404 })
-  },
+  fetch: app.fetch,
 })
 
 console.log(`Server listening on http://localhost:${server.port}`)
