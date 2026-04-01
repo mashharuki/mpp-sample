@@ -10,6 +10,7 @@ const recipient = process.env.RECIPIENT_ADDRESS ?? '0xf39Fd6e51aad88F6F4ce6aB882
 const mppx = Mppx.create({
   methods: [
     tempo({
+      testnet: true,
       currency: USDC_E,
       recipient: recipient as `0x${string}`,
       account: privateKeyToAccount(process.env.MPP_SECRET_KEY as `0x${string}`),

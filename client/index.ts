@@ -14,7 +14,7 @@ if (!/^0x[a-fA-F0-9]{64}$/.test(privateKey)) {
 
 // Mppxクライアントの作成
 Mppx.create({
-	methods: [tempo({ account: privateKeyToAccount(privateKey) })],
+	methods: [tempo({ testnet: true, account: privateKeyToAccount(privateKey) })],
 })
 
 // サーバーにペイドピンを送信
